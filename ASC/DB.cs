@@ -1,9 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Collections.ObjectModel;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using MySql.Data.MySqlClient;
 
@@ -28,12 +23,8 @@ namespace ASC
                     Application.Current.Shutdown(-1);
                 else goto retry;
             }
-            
-
-           
-        
-        }  
-        
+        }
+        public void Req(string req) => new MySqlCommand(req).ExecuteNonQuery();
         public MySqlConnection conn;
     }
 }
