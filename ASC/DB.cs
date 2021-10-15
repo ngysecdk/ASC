@@ -24,7 +24,7 @@ namespace ASC
                 else goto retry;
             }
         }
-        public void Req(string req) => new MySqlCommand(req).ExecuteNonQuery();
+        public void Req(string req) => new MySqlCommand(req, conn).ExecuteNonQuery();
         public MySqlConnection conn;
     }
 }
