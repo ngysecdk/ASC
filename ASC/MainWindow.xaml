@@ -4,9 +4,142 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:ASC"
+        xmlns:col="clr-namespace:System.Collections;assembly=mscorlib"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
+        Title="Программный комплекс бухгалтера" Height="768" Width="1024" WindowState="Maximized" WindowStartupLocation="CenterScreen" MinWidth="1024" MinHeight="768" Closing="Window_Closing">
     <Grid>
-        
+        <Grid.Background>
+            <ImageBrush ImageSource="Images/LoginBack.jpg"/>
+        </Grid.Background>
+        <TabControl Margin="0,0,0,50" Background="#99363636" FontSize="16">
+            <TabItem Header="Анкер">
+                <Grid Background="#99818181">
+                    <DataGrid x:Name="Ankers" Margin="0" Background="{x:Null}" FontSize="16" AutoGenerateColumns="False" PreviewKeyDown="Ankers_PreviewKeyDown">
+                        <DataGrid.Columns>
+                            <DataGridTextColumn Header="ID" Binding="{Binding ID}" Width="25" IsReadOnly="True"/>
+                            <DataGridTextColumn Header="Тип анкера" Binding="{Binding Info}" Width="700"/>
+                            <DataGridTextColumn Header="Цена" Binding="{Binding Cost}" Width="200"/>
+                        </DataGrid.Columns>
+                    </DataGrid>
+                </Grid>
+            </TabItem>
+            <TabItem Header="Бридж">
+                <Grid Background="#99818181">
+                    <DataGrid x:Name="Bridges" Margin="0" Background="{x:Null}" FontSize="16" AutoGenerateColumns="False" PreviewKeyDown="Bridges_PreviewKeyDown">
+                        <DataGrid.Columns>
+                            <DataGridTextColumn Header="ID" Binding="{Binding ID}" Width="25" IsReadOnly="True"/>
+                            <DataGridTextColumn Header="Фирма" Binding="{Binding Firm}" Width="400"/>
+                            <DataGridTextColumn Header="Модель" Binding="{Binding Model}" Width="400"/>
+                            <DataGridTextColumn Header="Цена" Binding="{Binding Cost}" Width="200"/>
+                        </DataGrid.Columns>
+                    </DataGrid>
+                </Grid>
+            </TabItem>
+            <TabItem Header="Вид сборки">
+                <Grid Background="#99818181">
+                    <DataGrid x:Name="BuildType" Margin="0" Background="{x:Null}" FontSize="16" AutoGenerateColumns="False" PreviewKeyDown="BuildType_PreviewKeyDown">
+                        <DataGrid.Columns>
+                            <DataGridTextColumn Header="ID" Binding="{Binding ID}" Width="25" IsReadOnly="True"/>
+                            <DataGridTextColumn Header="Сборка" Binding="{Binding Info}" Width="700"/>
+                            <DataGridTextColumn Header="Цена" Binding="{Binding Cost}" Width="200"/>
+                        </DataGrid.Columns>
+                    </DataGrid>
+                </Grid>
+            </TabItem>
+            <TabItem Header="Материал корпуса">
+                <Grid Background="#99818181">
+                    <DataGrid x:Name="DekaMaterial" Margin="0" Background="{x:Null}" FontSize="16" AutoGenerateColumns="False" PreviewKeyDown="DekaMaterial_PreviewKeyDown">
+                        <DataGrid.Columns>
+                            <DataGridTextColumn Header="ID" Binding="{Binding ID}" Width="25" IsReadOnly="True"/>
+                            <DataGridTextColumn Header="Материал" Binding="{Binding Info}" Width="700"/>
+                            <DataGridTextColumn Header="Цена" Binding="{Binding Cost}" Width="200"/>
+                        </DataGrid.Columns>
+                    </DataGrid>
+                </Grid>
+            </TabItem>
+            <TabItem Header="Струны">
+                <Grid Background="#99818181">
+                    <DataGrid x:Name="Strings" Margin="0" Background="{x:Null}" FontSize="16" AutoGenerateColumns="False" PreviewKeyDown="Strings_PreviewKeyDown">
+                        <DataGrid.Columns>
+                            <DataGridTextColumn Header="ID" Binding="{Binding ID}" Width="25" IsReadOnly="True"/>
+                            <DataGridTextColumn Header="Фирма" Binding="{Binding Firm}" Width="400"/>
+                            <DataGridTextColumn Header="Модель" Binding="{Binding Model}" Width="400"/>
+                            <DataGridTextColumn Header="Примерная Цена" Binding="{Binding Cost}" Width="200"/>
+                        </DataGrid.Columns>
+                    </DataGrid>
+                </Grid>
+            </TabItem>
+            <TabItem Header="Материал грифа">
+                <Grid Background="#99818181">
+                    <DataGrid x:Name="GrifMaterial" Margin="0" Background="{x:Null}" FontSize="16" AutoGenerateColumns="False" PreviewKeyDown="GrifMaterial_PreviewKeyDown">
+                        <DataGrid.Columns>
+                            <DataGridTextColumn Header="ID" Binding="{Binding ID}" Width="25" IsReadOnly="True"/>
+                            <DataGridTextColumn Header="Материал" Binding="{Binding Info}" Width="700"/>
+                            <DataGridTextColumn Header="Цена" Binding="{Binding Cost}" Width="200"/>
+                        </DataGrid.Columns>
+                    </DataGrid>
+                </Grid>
+            </TabItem>
+            <TabItem Header="Покраска и аэрография">
+                <Grid Background="#99818181">
+                    <DataGrid x:Name="Coloring" Margin="0" Background="{x:Null}" FontSize="16" AutoGenerateColumns="False" PreviewKeyDown="Coloring_PreviewKeyDown">
+                        <DataGrid.Columns>
+                            <DataGridTextColumn Header="ID" Binding="{Binding ID}" Width="25" IsReadOnly="True"/>
+                            <DataGridTextColumn Header="Тип" Binding="{Binding Info}" Width="700"/>
+                            <DataGridTextColumn Header="Цена" Binding="{Binding Cost}" Width="200"/>
+                        </DataGrid.Columns>
+                    </DataGrid>
+                </Grid>
+            </TabItem>
+            <TabItem Header="Электроника">
+                <Grid Background="#99818181">
+                    <DataGrid x:Name="Electronic" Margin="0" Background="{x:Null}" FontSize="16" AutoGenerateColumns="False" PreviewKeyDown="Electronic_PreviewKeyDown">
+                        <DataGrid.Columns>
+                            <DataGridTextColumn Header="ID" Binding="{Binding ID}" Width="25" IsReadOnly="True"/>
+                            <DataGridTextColumn Header="Конфигурация" Binding="{Binding Info}" Width="700"/>
+                            <DataGridTextColumn Header="Цена" Binding="{Binding Cost}" Width="200"/>
+                        </DataGrid.Columns>
+                    </DataGrid>
+                </Grid>
+            </TabItem>
+            <TabItem Header="Колки">
+                <Grid Background="#99818181">
+                    <DataGrid x:Name="Kolk" Margin="0" Background="{x:Null}" FontSize="16" AutoGenerateColumns="False" PreviewKeyDown="Kolk_PreviewKeyDown">
+                        <DataGrid.Columns>
+                            <DataGridTextColumn Header="ID" Binding="{Binding ID}" Width="25" IsReadOnly="True"/>
+                            <DataGridTextColumn Header="Фирма" Binding="{Binding Firm}" Width="400"/>
+                            <DataGridTextColumn Header="Модель" Binding="{Binding Model}" Width="400"/>
+                            <DataGridTextColumn Header="Примерная Цена" Binding="{Binding Cost}" Width="200"/>
+                        </DataGrid.Columns>
+                    </DataGrid>
+                </Grid>
+            </TabItem>
+            <TabItem Header="Звукосниматели">
+                <Grid Background="#99818181">
+                    <DataGrid x:Name="SoundGetter" Margin="0" Background="{x:Null}" FontSize="16" AutoGenerateColumns="False" PreviewKeyDown="SoundGetter_PreviewKeyDown">
+                        <DataGrid.Columns>
+                            <DataGridTextColumn Header="ID" Binding="{Binding ID}" Width="25" IsReadOnly="True"/>
+                            <DataGridTextColumn Header="Фирма" Binding="{Binding Firm}" Width="400"/>
+                            <DataGridTextColumn Header="Модель" Binding="{Binding Model}" Width="400"/>
+                            <DataGridTextColumn Header="Примерная Цена" Binding="{Binding Cost}" Width="200"/>
+                        </DataGrid.Columns>
+                    </DataGrid>
+                </Grid>
+            </TabItem>
+            <TabItem Header="Подтверждение заказов">
+                <Grid Background="#99818181">
+                   
+                </Grid>
+            </TabItem>
+            <TabItem Header="Сотрудники">
+                <Grid Background="#99818181">
+                    
+                </Grid>
+            </TabItem>
+        </TabControl>
+        <Button x:Name="Save" Content="Сохранить" HorizontalAlignment="Right" Height="35" Margin="0,0,10,10" VerticalAlignment="Bottom" Width="156" FontSize="20" Click="Save_Click"/>
+        <TextBlock HorizontalAlignment="Left" Margin="0,688,0,0" TextWrapping="Wrap" Text="Для удаления строки нажмите клавишу Del, после редактирования поля нажмите Enter для автосохранения. Для сохранения в ручном режиме нажмите кнопку сохранить" VerticalAlignment="Bottom" Width="845" Height="50" FontSize="20"/>
+
+
     </Grid>
 </Window>
