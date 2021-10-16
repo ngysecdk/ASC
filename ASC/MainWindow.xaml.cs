@@ -3,6 +3,8 @@ using System.Collections.ObjectModel;
 using System.Windows;
 using System.Windows.Input;
 using System.Collections.Specialized;
+using System.Windows.Controls;
+
 namespace ASC
 {
     /// <summary>
@@ -11,7 +13,6 @@ namespace ASC
     public partial class MainWindow : Window
     {
         private DB db;
-        ObservableCollection<StandartObj> ankers = new ObservableCollection<StandartObj>();
         objectCollection anker, buildType, dekaMaterial, grifMaterial, coloring, electric;
         object4Collection bridge, strings, kolk, soundGetter;
         public MainWindow()
@@ -94,46 +95,26 @@ namespace ASC
                     MessageBoxOptions.DefaultDesktopOnly);
         }
         #region keyEnter
-        private void Ankers_PreviewKeyDown(object sender, KeyEventArgs e)
+        void EnterDownEvent(KeyEventArgs e, DataGrid dataGrid, objectCollection obj)
         {
-            if (e.Key == Key.Enter || e.Key == Key.Tab) db.Req(anker.Update((StandartObj)Ankers.SelectedItem));
+            if (dataGrid.SelectedIndex == -1) return;
+            if (e.Key == Key.Enter || e.Key == Key.Tab) db.Req(obj.Update((StandartObj)dataGrid.SelectedItem));
         }
-        private void BuildType_PreviewKeyDown(object sender, KeyEventArgs e)
+        void EnterDownEvent(KeyEventArgs e, DataGrid dataGrid, object4Collection obj)
         {
-            if (e.Key == Key.Enter || e.Key == Key.Tab) db.Req(buildType.Update((StandartObj)BuildType.SelectedItem));
+            if (dataGrid.SelectedIndex == -1) return;
+            if (e.Key == Key.Enter || e.Key == Key.Tab) db.Req(obj.Update((StandartObj4)dataGrid.SelectedItem));
         }
-        private void DekaMaterial_PreviewKeyDown(object sender, KeyEventArgs e)
-        {
-            if (e.Key == Key.Enter || e.Key == Key.Tab) db.Req(dekaMaterial.Update((StandartObj)DekaMaterial.SelectedItem));
-        }
-        private void Strings_PreviewKeyDown(object sender, KeyEventArgs e)
-        {
-            if (e.Key == Key.Enter || e.Key == Key.Tab) db.Req(strings.Update((StandartObj4)Strings.SelectedItem));
-        }
-        private void GrifMaterial_PreviewKeyDown(object sender, KeyEventArgs e)
-        {
-            if (e.Key == Key.Enter || e.Key == Key.Tab) db.Req(grifMaterial.Update((StandartObj)GrifMaterial.SelectedItem));
-        }
-        private void Coloring_PreviewKeyDown(object sender, KeyEventArgs e)
-        {
-            if (e.Key == Key.Enter || e.Key == Key.Tab) db.Req(coloring.Update((StandartObj)Coloring.SelectedItem));
-        }
-        private void Electronic_PreviewKeyDown(object sender, KeyEventArgs e)
-        {
-            if (e.Key == Key.Enter || e.Key == Key.Tab) db.Req(electric.Update((StandartObj)Electronic.SelectedItem));
-        }
-        private void Kolk_PreviewKeyDown(object sender, KeyEventArgs e)
-        {
-            if (e.Key == Key.Enter || e.Key == Key.Tab) db.Req(kolk.Update((StandartObj4)Kolk.SelectedItem));
-        }
-        private void SoundGetter_PreviewKeyDown(object sender, KeyEventArgs e)
-        {
-            if (e.Key == Key.Enter || e.Key == Key.Tab) db.Req(soundGetter.Update((StandartObj4)SoundGetter.SelectedItem));
-        }
-        private void Bridges_PreviewKeyDown(object sender, KeyEventArgs e)
-        {
-            if (e.Key == Key.Enter || e.Key == Key.Tab) db.Req(bridge.Update((StandartObj4)Bridges.SelectedItem));
-        }
+        private void Ankers_PreviewKeyDown(object s, KeyEventArgs e) => EnterDownEvent(e, (DataGrid)s, anker);
+        private void BuildType_PreviewKeyDown(object s, KeyEventArgs e) => EnterDownEvent(e, (DataGrid)s, buildType);
+        private void DekaMaterial_PreviewKeyDown(object s, KeyEventArgs e) => EnterDownEvent(e, (DataGrid)s, dekaMaterial);
+        private void GrifMaterial_PreviewKeyDown(object s, KeyEventArgs e) => EnterDownEvent(e, (DataGrid)s, grifMaterial);
+        private void Coloring_PreviewKeyDown(object s, KeyEventArgs e) => EnterDownEvent(e, (DataGrid)s, coloring);
+        private void Electronic_PreviewKeyDown(object s, KeyEventArgs e) => EnterDownEvent(e, (DataGrid)s, electric);
+        private void Strings_PreviewKeyDown(object s, KeyEventArgs e) => EnterDownEvent(e, (DataGrid)s, strings);
+        private void Kolk_PreviewKeyDown(object s, KeyEventArgs e) => EnterDownEvent(e, (DataGrid)s, kolk);
+        private void SoundGetter_PreviewKeyDown(object s, KeyEventArgs e) => EnterDownEvent(e, (DataGrid)s, soundGetter);
+        private void Bridges_PreviewKeyDown(object s, KeyEventArgs e) => EnterDownEvent(e, (DataGrid)s, bridge);
         #endregion
     }
     public class StandartObj4
@@ -143,7 +124,6 @@ namespace ASC
         public string Model { get; set; }
         public int Cost { get; set; }
     }
-
     class object4Collection
     {
         string Cost = "Примерная_цена", Firm="Фирма", Model="Модель", Table;
@@ -156,7 +136,6 @@ namespace ASC
             Load();
             collector.CollectionChanged += CollectionChanged;
         }
-
         public void Load()
         {
             MySqlDataReader reader = new MySqlCommand(GetAll(), dB.conn).ExecuteReader();
@@ -205,7 +184,6 @@ namespace ASC
             Load();
             collector.CollectionChanged += CollectionChanged;
         }
-
         public void Load()
         {
             MySqlDataReader reader = new MySqlCommand(GetAll(), dB.conn).ExecuteReader();
@@ -233,11 +211,10 @@ namespace ASC
         string IdFromData(StandartObj obj) => string.Format("SELECT Код FROM {0} WHERE {1}='{2}' AND {3}={4}", Table, Info, obj.Info, Cost, obj.Cost);
         string GetAll() => string.Format("SELECT Код, {0}, {1} FROM {2}", Info, Cost, Table);
         string Add(StandartObj obj) => string.Format("INSERT INTO {0} ({1}, {2}) VALUES ('{3}', {4})", Table, Info, Cost, obj.Info, obj.Cost);
-        public string Update(StandartObj obj) => string.Format("UPDATE {3} SET {4}='{0}', {5}={1} WHERE Код={2}", obj.Info, obj.Cost, obj.ID, Table, Info, Cost);
+        public string Update(StandartObj obj) => string.Format("UPDATE {0} SET {1}='{2}', {3}={4} WHERE Код={5}", Table, Info, obj.Info, Cost, obj.Cost, obj.ID);
         string Remove(StandartObj obj) => string.Format("DELETE FROM {0} WHERE Код={1}", Table, obj.ID);
         public ObservableCollection<StandartObj> collector;
     }
-
     /// <summary>
     /// Общее описание элементов таблицы с 3мя основными полями
     /// </summary>
