@@ -20,7 +20,7 @@ namespace ASC
                     MessageBoxImage.Question,
                     MessageBoxResult.Yes,
                     MessageBoxOptions.DefaultDesktopOnly) == MessageBoxResult.No)
-                    Application.Current.Shutdown(-1);
+                    Environment.Exit(-1);
                 else goto retry;
             }
         }
