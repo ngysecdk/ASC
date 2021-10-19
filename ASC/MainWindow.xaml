@@ -3,8 +3,6 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:ASC"
-        xmlns:col="clr-namespace:System.Collections;assembly=mscorlib"
         mc:Ignorable="d"
         Title="Программный комплекс бухгалтера" Height="768" Width="1024" WindowState="Maximized" WindowStartupLocation="CenterScreen" MinWidth="1024" MinHeight="768">
     <Grid>
@@ -14,7 +12,7 @@
         <TabControl Margin="0" Background="#99363636" FontSize="16">
             <TabItem Header="Анкер">
                 <Grid Background="#99818181">
-                    <DataGrid x:Name="Ankers" Margin="0" Background="{x:Null}" FontSize="16" AutoGenerateColumns="False" InitializingNewItem="InitializingNewItem">
+                    <DataGrid x:Name="Ankers" Margin="0" Background="{x:Null}" FontSize="16" AutoGenerateColumns="False" InitializingNewItem="InitializingNewItem" IsTextSearchEnabled="True">
                         <DataGrid.Columns>
                             <DataGridTextColumn Header="ID" Binding="{Binding Path=Код}" Width="30" IsReadOnly="True"/>
                             <DataGridTextColumn Header="Тип анкера" Binding="{Binding Path=Тип_анкера}" Width="700"/>
@@ -25,7 +23,7 @@
             </TabItem>
             <TabItem Header="Бридж">
                 <Grid Background="#99818181">
-                    <DataGrid x:Name="Bridges" Margin="0" Background="{x:Null}" FontSize="16" AutoGenerateColumns="False" InitializingNewItem="InitializingNewItem">
+                    <DataGrid x:Name="Bridges" Margin="0" Background="{x:Null}" FontSize="16" AutoGenerateColumns="False" InitializingNewItem="InitializingNewItem" IsTextSearchEnabled="True">
                         <DataGrid.Columns>
                             <DataGridTextColumn Header="ID" Binding="{Binding Path=Код}" Width="25" IsReadOnly="True"/>
                             <DataGridTextColumn Header="Фирма" Binding="{Binding Path=Фирма}" Width="400"/>
@@ -37,7 +35,7 @@
             </TabItem>
             <TabItem Header="Вид сборки">
                 <Grid Background="#99818181">
-                    <DataGrid x:Name="BuildType" Margin="0" Background="{x:Null}" FontSize="16" AutoGenerateColumns="False"  InitializingNewItem="InitializingNewItem">
+                    <DataGrid x:Name="BuildType" Margin="0" Background="{x:Null}" FontSize="16" AutoGenerateColumns="False"  InitializingNewItem="InitializingNewItem" IsTextSearchEnabled="True">
                         <DataGrid.Columns>
                             <DataGridTextColumn Header="ID" Binding="{Binding Path=Код}" Width="25" IsReadOnly="True"/>
                             <DataGridTextColumn Header="Сборка" Binding="{Binding Path=Сборка}" Width="700"/>
@@ -48,7 +46,7 @@
             </TabItem>
             <TabItem Header="Материал корпуса">
                 <Grid Background="#99818181">
-                    <DataGrid x:Name="DekaMaterial" Margin="0" Background="{x:Null}" FontSize="16" AutoGenerateColumns="False" InitializingNewItem="InitializingNewItem">
+                    <DataGrid x:Name="DekaMaterial" Margin="0" Background="{x:Null}" FontSize="16" AutoGenerateColumns="False" InitializingNewItem="InitializingNewItem" IsTextSearchEnabled="True">
                         <DataGrid.Columns>
                             <DataGridTextColumn Header="ID" Binding="{Binding Path=Код}" Width="25" IsReadOnly="True"/>
                             <DataGridTextColumn Header="Материал" Binding="{Binding Path=Материал}" Width="700"/>
@@ -59,7 +57,7 @@
             </TabItem>
             <TabItem Header="Струны">
                 <Grid Background="#99818181">
-                    <DataGrid x:Name="Strings" Margin="0" Background="{x:Null}" FontSize="16" AutoGenerateColumns="False" InitializingNewItem="InitializingNewItem">
+                    <DataGrid x:Name="Strings" Margin="0" Background="{x:Null}" FontSize="16" AutoGenerateColumns="False" InitializingNewItem="InitializingNewItem" IsTextSearchEnabled="True">
                         <DataGrid.Columns>
                             <DataGridTextColumn Header="ID" Binding="{Binding Path=Код}" Width="25" IsReadOnly="True"/>
                             <DataGridTextColumn Header="Фирма" Binding="{Binding Path=Фирма}" Width="400"/>
@@ -71,7 +69,7 @@
             </TabItem>
             <TabItem Header="Материал грифа">
                 <Grid Background="#99818181">
-                    <DataGrid x:Name="GrifMaterial" Margin="0" Background="{x:Null}" FontSize="16" AutoGenerateColumns="False" InitializingNewItem="InitializingNewItem">
+                    <DataGrid x:Name="GrifMaterial" Margin="0" Background="{x:Null}" FontSize="16" AutoGenerateColumns="False" InitializingNewItem="InitializingNewItem" IsTextSearchEnabled="True">
                         <DataGrid.Columns>
                             <DataGridTextColumn Header="ID" Binding="{Binding Path=Код}" Width="25" IsReadOnly="True"/>
                             <DataGridTextColumn Header="Материал" Binding="{Binding Path=Материал}" Width="700"/>
@@ -82,7 +80,7 @@
             </TabItem>
             <TabItem Header="Покраска и аэрография">
                 <Grid Background="#99818181">
-                    <DataGrid x:Name="Coloring" Margin="0" Background="{x:Null}" FontSize="16" AutoGenerateColumns="False" InitializingNewItem="InitializingNewItem">
+                    <DataGrid x:Name="Coloring" Margin="0" Background="{x:Null}" FontSize="16" AutoGenerateColumns="False" InitializingNewItem="InitializingNewItem" IsTextSearchEnabled="True">
                         <DataGrid.Columns>
                             <DataGridTextColumn Header="ID" Binding="{Binding Path=Код}" Width="25" IsReadOnly="True"/>
                             <DataGridTextColumn Header="Тип" Binding="{Binding Path=Тип}" Width="700"/>
@@ -93,7 +91,7 @@
             </TabItem>
             <TabItem Header="Электроника">
                 <Grid Background="#99818181">
-                    <DataGrid x:Name="Electronic" Margin="0" Background="{x:Null}" FontSize="16" AutoGenerateColumns="False" InitializingNewItem="InitializingNewItem">
+                    <DataGrid x:Name="Electronic" Margin="0" Background="{x:Null}" FontSize="16" AutoGenerateColumns="False" InitializingNewItem="InitializingNewItem" IsTextSearchEnabled="True">
                         <DataGrid.Columns>
                             <DataGridTextColumn Header="ID" Binding="{Binding Path=Код}" Width="25" IsReadOnly="True"/>
                             <DataGridTextColumn Header="Конфигурация" Binding="{Binding Path=Конфигурация}" Width="700"/>
@@ -104,7 +102,7 @@
             </TabItem>
             <TabItem Header="Колки">
                 <Grid Background="#99818181">
-                    <DataGrid x:Name="Kolk" Margin="0" Background="{x:Null}" FontSize="16" AutoGenerateColumns="False" InitializingNewItem="InitializingNewItem">
+                    <DataGrid x:Name="Kolk" Margin="0" Background="{x:Null}" FontSize="16" AutoGenerateColumns="False" InitializingNewItem="InitializingNewItem" IsTextSearchEnabled="True">
                         <DataGrid.Columns>
                             <DataGridTextColumn Header="ID" Binding="{Binding Path=Код}" Width="25" IsReadOnly="True"/>
                             <DataGridTextColumn Header="Фирма" Binding="{Binding Path=Фирма}" Width="400"/>
@@ -116,7 +114,7 @@
             </TabItem>
             <TabItem Header="Звукосниматели">
                 <Grid Background="#99818181">
-                    <DataGrid x:Name="SoundGetter" Margin="0" Background="{x:Null}" FontSize="16" AutoGenerateColumns="False" InitializingNewItem="InitializingNewItem">
+                    <DataGrid x:Name="SoundGetter" Margin="0" Background="{x:Null}" FontSize="16" AutoGenerateColumns="False" InitializingNewItem="InitializingNewItem" IsTextSearchEnabled="True">
                         <DataGrid.Columns>
                             <DataGridTextColumn Header="ID" Binding="{Binding Path=Код}" Width="25" IsReadOnly="True"/>
                             <DataGridTextColumn Header="Фирма" Binding="{Binding Path=Фирма}" Width="400"/>
@@ -146,8 +144,5 @@
             </TabItem>
         </TabControl>
         <TextBlock HorizontalAlignment="Left" TextWrapping="Wrap" Text="Для удаления строки нажмите клавишу DeL" VerticalAlignment="Bottom" Width="410" Height="27" FontSize="20" Margin="4,0,0,10"/>
-
-
-
     </Grid>
 </Window>

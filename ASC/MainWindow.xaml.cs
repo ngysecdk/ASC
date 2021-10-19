@@ -1,8 +1,5 @@
 ﻿using MySql.Data.MySqlClient;
-using System.Collections.ObjectModel;
 using System.Windows;
-using System.Windows.Input;
-using System.Collections.Specialized;
 using System.Windows.Controls;
 using System.Data;
 using System;
@@ -43,8 +40,7 @@ namespace ASC
         private void AccessOrder_Click(object sender, RoutedEventArgs e)
         {
             try { db.Req(string.Format("UPDATE Заказ SET Подтвержден=TRUE WHERE Код={0}", OrderId)); }
-            catch(Exception ex)
-            {
+            catch(Exception ex) {
                 MessageBox.Show("Ошибка!", ex.Message, MessageBoxButton.OK, MessageBoxImage.Error);
                 return;
             }
