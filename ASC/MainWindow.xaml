@@ -6,122 +6,122 @@
         xmlns:local="clr-namespace:ASC"
         xmlns:col="clr-namespace:System.Collections;assembly=mscorlib"
         mc:Ignorable="d"
-        Title="Программный комплекс бухгалтера" Height="768" Width="1024" WindowState="Maximized" WindowStartupLocation="CenterScreen" MinWidth="1024" MinHeight="768" Closing="Window_Closing">
+        Title="Программный комплекс бухгалтера" Height="768" Width="1024" WindowState="Maximized" WindowStartupLocation="CenterScreen" MinWidth="1024" MinHeight="768">
     <Grid>
         <Grid.Background>
             <ImageBrush ImageSource="Images/LoginBack.jpg"/>
         </Grid.Background>
-        <TabControl Margin="0,0,0,50" Background="#99363636" FontSize="16">
+        <TabControl Margin="0" Background="#99363636" FontSize="16">
             <TabItem Header="Анкер">
                 <Grid Background="#99818181">
-                    <DataGrid x:Name="Ankers" Margin="0" Background="{x:Null}" FontSize="16" AutoGenerateColumns="False" PreviewKeyDown="Ankers_PreviewKeyDown">
+                    <DataGrid x:Name="Ankers" Margin="0" Background="{x:Null}" FontSize="16" AutoGenerateColumns="False" InitializingNewItem="InitializingNewItem">
                         <DataGrid.Columns>
-                            <DataGridTextColumn Header="ID" Binding="{Binding ID}" Width="25" IsReadOnly="True"/>
-                            <DataGridTextColumn Header="Тип анкера" Binding="{Binding Info}" Width="700"/>
-                            <DataGridTextColumn Header="Цена" Binding="{Binding Cost}" Width="200"/>
+                            <DataGridTextColumn Header="ID" Binding="{Binding Path=Код}" Width="30" IsReadOnly="True"/>
+                            <DataGridTextColumn Header="Тип анкера" Binding="{Binding Path=Тип_анкера}" Width="700"/>
+                            <DataGridTextColumn Header="Примерная цена" Binding="{Binding Path=Примерная_цена}" Width="200"/>
                         </DataGrid.Columns>
                     </DataGrid>
                 </Grid>
             </TabItem>
             <TabItem Header="Бридж">
                 <Grid Background="#99818181">
-                    <DataGrid x:Name="Bridges" Margin="0" Background="{x:Null}" FontSize="16" AutoGenerateColumns="False" PreviewKeyDown="Bridges_PreviewKeyDown">
+                    <DataGrid x:Name="Bridges" Margin="0" Background="{x:Null}" FontSize="16" AutoGenerateColumns="False" InitializingNewItem="InitializingNewItem">
                         <DataGrid.Columns>
-                            <DataGridTextColumn Header="ID" Binding="{Binding ID}" Width="25" IsReadOnly="True"/>
-                            <DataGridTextColumn Header="Фирма" Binding="{Binding Firm}" Width="400"/>
-                            <DataGridTextColumn Header="Модель" Binding="{Binding Model}" Width="400"/>
-                            <DataGridTextColumn Header="Цена" Binding="{Binding Cost}" Width="200"/>
+                            <DataGridTextColumn Header="ID" Binding="{Binding Path=Код}" Width="25" IsReadOnly="True"/>
+                            <DataGridTextColumn Header="Фирма" Binding="{Binding Path=Фирма}" Width="400"/>
+                            <DataGridTextColumn Header="Модель" Binding="{Binding Path=Модель}" Width="400"/>
+                            <DataGridTextColumn Header="Цена" Binding="{Binding Path=Примерная_цена}" Width="200"/>
                         </DataGrid.Columns>
                     </DataGrid>
                 </Grid>
             </TabItem>
             <TabItem Header="Вид сборки">
                 <Grid Background="#99818181">
-                    <DataGrid x:Name="BuildType" Margin="0" Background="{x:Null}" FontSize="16" AutoGenerateColumns="False" PreviewKeyDown="BuildType_PreviewKeyDown">
+                    <DataGrid x:Name="BuildType" Margin="0" Background="{x:Null}" FontSize="16" AutoGenerateColumns="False"  InitializingNewItem="InitializingNewItem">
                         <DataGrid.Columns>
-                            <DataGridTextColumn Header="ID" Binding="{Binding ID}" Width="25" IsReadOnly="True"/>
-                            <DataGridTextColumn Header="Сборка" Binding="{Binding Info}" Width="700"/>
-                            <DataGridTextColumn Header="Цена" Binding="{Binding Cost}" Width="200"/>
+                            <DataGridTextColumn Header="ID" Binding="{Binding Path=Код}" Width="25" IsReadOnly="True"/>
+                            <DataGridTextColumn Header="Сборка" Binding="{Binding Path=Сборка}" Width="700"/>
+                            <DataGridTextColumn Header="Цена" Binding="{Binding Path=Цена}" Width="200"/>
                         </DataGrid.Columns>
                     </DataGrid>
                 </Grid>
             </TabItem>
             <TabItem Header="Материал корпуса">
                 <Grid Background="#99818181">
-                    <DataGrid x:Name="DekaMaterial" Margin="0" Background="{x:Null}" FontSize="16" AutoGenerateColumns="False" PreviewKeyDown="DekaMaterial_PreviewKeyDown">
+                    <DataGrid x:Name="DekaMaterial" Margin="0" Background="{x:Null}" FontSize="16" AutoGenerateColumns="False" InitializingNewItem="InitializingNewItem">
                         <DataGrid.Columns>
-                            <DataGridTextColumn Header="ID" Binding="{Binding ID}" Width="25" IsReadOnly="True"/>
-                            <DataGridTextColumn Header="Материал" Binding="{Binding Info}" Width="700"/>
-                            <DataGridTextColumn Header="Цена" Binding="{Binding Cost}" Width="200"/>
+                            <DataGridTextColumn Header="ID" Binding="{Binding Path=Код}" Width="25" IsReadOnly="True"/>
+                            <DataGridTextColumn Header="Материал" Binding="{Binding Path=Материал}" Width="700"/>
+                            <DataGridTextColumn Header="Цена" Binding="{Binding Path=Примерная_цена}" Width="200"/>
                         </DataGrid.Columns>
                     </DataGrid>
                 </Grid>
             </TabItem>
             <TabItem Header="Струны">
                 <Grid Background="#99818181">
-                    <DataGrid x:Name="Strings" Margin="0" Background="{x:Null}" FontSize="16" AutoGenerateColumns="False" PreviewKeyDown="Strings_PreviewKeyDown">
+                    <DataGrid x:Name="Strings" Margin="0" Background="{x:Null}" FontSize="16" AutoGenerateColumns="False" InitializingNewItem="InitializingNewItem">
                         <DataGrid.Columns>
-                            <DataGridTextColumn Header="ID" Binding="{Binding ID}" Width="25" IsReadOnly="True"/>
-                            <DataGridTextColumn Header="Фирма" Binding="{Binding Firm}" Width="400"/>
-                            <DataGridTextColumn Header="Модель" Binding="{Binding Model}" Width="400"/>
-                            <DataGridTextColumn Header="Примерная Цена" Binding="{Binding Cost}" Width="200"/>
+                            <DataGridTextColumn Header="ID" Binding="{Binding Path=Код}" Width="25" IsReadOnly="True"/>
+                            <DataGridTextColumn Header="Фирма" Binding="{Binding Path=Фирма}" Width="400"/>
+                            <DataGridTextColumn Header="Модель" Binding="{Binding Path=Модель}" Width="400"/>
+                            <DataGridTextColumn Header="Примерная Цена" Binding="{Binding Path=Примерная_цена}" Width="200"/>
                         </DataGrid.Columns>
                     </DataGrid>
                 </Grid>
             </TabItem>
             <TabItem Header="Материал грифа">
                 <Grid Background="#99818181">
-                    <DataGrid x:Name="GrifMaterial" Margin="0" Background="{x:Null}" FontSize="16" AutoGenerateColumns="False" PreviewKeyDown="GrifMaterial_PreviewKeyDown">
+                    <DataGrid x:Name="GrifMaterial" Margin="0" Background="{x:Null}" FontSize="16" AutoGenerateColumns="False" InitializingNewItem="InitializingNewItem">
                         <DataGrid.Columns>
-                            <DataGridTextColumn Header="ID" Binding="{Binding ID}" Width="25" IsReadOnly="True"/>
-                            <DataGridTextColumn Header="Материал" Binding="{Binding Info}" Width="700"/>
-                            <DataGridTextColumn Header="Цена" Binding="{Binding Cost}" Width="200"/>
+                            <DataGridTextColumn Header="ID" Binding="{Binding Path=Код}" Width="25" IsReadOnly="True"/>
+                            <DataGridTextColumn Header="Материал" Binding="{Binding Path=Материал}" Width="700"/>
+                            <DataGridTextColumn Header="Цена" Binding="{Binding Path=Примерная_цена}" Width="200"/>
                         </DataGrid.Columns>
                     </DataGrid>
                 </Grid>
             </TabItem>
             <TabItem Header="Покраска и аэрография">
                 <Grid Background="#99818181">
-                    <DataGrid x:Name="Coloring" Margin="0" Background="{x:Null}" FontSize="16" AutoGenerateColumns="False" PreviewKeyDown="Coloring_PreviewKeyDown">
+                    <DataGrid x:Name="Coloring" Margin="0" Background="{x:Null}" FontSize="16" AutoGenerateColumns="False" InitializingNewItem="InitializingNewItem">
                         <DataGrid.Columns>
-                            <DataGridTextColumn Header="ID" Binding="{Binding ID}" Width="25" IsReadOnly="True"/>
-                            <DataGridTextColumn Header="Тип" Binding="{Binding Info}" Width="700"/>
-                            <DataGridTextColumn Header="Цена" Binding="{Binding Cost}" Width="200"/>
+                            <DataGridTextColumn Header="ID" Binding="{Binding Path=Код}" Width="25" IsReadOnly="True"/>
+                            <DataGridTextColumn Header="Тип" Binding="{Binding Path=Тип}" Width="700"/>
+                            <DataGridTextColumn Header="Цена" Binding="{Binding Path=Цена}" Width="200"/>
                         </DataGrid.Columns>
                     </DataGrid>
                 </Grid>
             </TabItem>
             <TabItem Header="Электроника">
                 <Grid Background="#99818181">
-                    <DataGrid x:Name="Electronic" Margin="0" Background="{x:Null}" FontSize="16" AutoGenerateColumns="False" PreviewKeyDown="Electronic_PreviewKeyDown">
+                    <DataGrid x:Name="Electronic" Margin="0" Background="{x:Null}" FontSize="16" AutoGenerateColumns="False" InitializingNewItem="InitializingNewItem">
                         <DataGrid.Columns>
-                            <DataGridTextColumn Header="ID" Binding="{Binding ID}" Width="25" IsReadOnly="True"/>
-                            <DataGridTextColumn Header="Конфигурация" Binding="{Binding Info}" Width="700"/>
-                            <DataGridTextColumn Header="Цена" Binding="{Binding Cost}" Width="200"/>
+                            <DataGridTextColumn Header="ID" Binding="{Binding Path=Код}" Width="25" IsReadOnly="True"/>
+                            <DataGridTextColumn Header="Конфигурация" Binding="{Binding Path=Конфигурация}" Width="700"/>
+                            <DataGridTextColumn Header="Цена" Binding="{Binding Path=Примерная_цена}" Width="200"/>
                         </DataGrid.Columns>
                     </DataGrid>
                 </Grid>
             </TabItem>
             <TabItem Header="Колки">
                 <Grid Background="#99818181">
-                    <DataGrid x:Name="Kolk" Margin="0" Background="{x:Null}" FontSize="16" AutoGenerateColumns="False" PreviewKeyDown="Kolk_PreviewKeyDown">
+                    <DataGrid x:Name="Kolk" Margin="0" Background="{x:Null}" FontSize="16" AutoGenerateColumns="False" InitializingNewItem="InitializingNewItem">
                         <DataGrid.Columns>
-                            <DataGridTextColumn Header="ID" Binding="{Binding ID}" Width="25" IsReadOnly="True"/>
-                            <DataGridTextColumn Header="Фирма" Binding="{Binding Firm}" Width="400"/>
-                            <DataGridTextColumn Header="Модель" Binding="{Binding Model}" Width="400"/>
-                            <DataGridTextColumn Header="Примерная Цена" Binding="{Binding Cost}" Width="200"/>
+                            <DataGridTextColumn Header="ID" Binding="{Binding Path=Код}" Width="25" IsReadOnly="True"/>
+                            <DataGridTextColumn Header="Фирма" Binding="{Binding Path=Фирма}" Width="400"/>
+                            <DataGridTextColumn Header="Модель" Binding="{Binding Path=Модель}" Width="400"/>
+                            <DataGridTextColumn Header="Примерная Цена" Binding="{Binding Path=Примерная_цена}" Width="200"/>
                         </DataGrid.Columns>
                     </DataGrid>
                 </Grid>
             </TabItem>
             <TabItem Header="Звукосниматели">
                 <Grid Background="#99818181">
-                    <DataGrid x:Name="SoundGetter" Margin="0" Background="{x:Null}" FontSize="16" AutoGenerateColumns="False" PreviewKeyDown="SoundGetter_PreviewKeyDown">
+                    <DataGrid x:Name="SoundGetter" Margin="0" Background="{x:Null}" FontSize="16" AutoGenerateColumns="False" InitializingNewItem="InitializingNewItem">
                         <DataGrid.Columns>
-                            <DataGridTextColumn Header="ID" Binding="{Binding ID}" Width="25" IsReadOnly="True"/>
-                            <DataGridTextColumn Header="Фирма" Binding="{Binding Firm}" Width="400"/>
-                            <DataGridTextColumn Header="Модель" Binding="{Binding Model}" Width="400"/>
-                            <DataGridTextColumn Header="Примерная Цена" Binding="{Binding Cost}" Width="200"/>
+                            <DataGridTextColumn Header="ID" Binding="{Binding Path=Код}" Width="25" IsReadOnly="True"/>
+                            <DataGridTextColumn Header="Фирма" Binding="{Binding Path=Фирма}" Width="400"/>
+                            <DataGridTextColumn Header="Модель" Binding="{Binding Path=Модель}" Width="400"/>
+                            <DataGridTextColumn Header="Примерная Цена" Binding="{Binding Path=Примерная_цена}" Width="200"/>
                         </DataGrid.Columns>
                     </DataGrid>
                 </Grid>
@@ -131,37 +131,21 @@
                     <TextBox x:Name="OrderId" Margin="30,90,0,0" FontSize="28" BorderBrush="#FF3F3F40" Foreground="Black" Background="{x:Null}" TextAlignment="Center" Height="46" VerticalAlignment="Top" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" HorizontalAlignment="Left" Width="400"/>
                     <TextBlock Margin="30,25,0,0" TextWrapping="Wrap" FontSize="28" Width="240" Height="50" HorizontalAlignment="Left" VerticalAlignment="Top"><Run Text="ID"/><Run Text=" заказа"/></TextBlock>
                     <Button x:Name="AccessOrder" Content="Подтвердить" HorizontalAlignment="Left" Height="50" Margin="450,87,0,0" VerticalAlignment="Top" Width="240" FontSize="24" Click="AccessOrder_Click"/>
-
                 </Grid>
             </TabItem>
             <TabItem Header="Сотрудники">
                 <Grid Background="#99818181">
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition></ColumnDefinition>
-                        <ColumnDefinition></ColumnDefinition>
-                    </Grid.ColumnDefinitions>
-                    <Grid.RowDefinitions>
-                        <RowDefinition Height="110*"></RowDefinition>
-                        <RowDefinition Height="90*"></RowDefinition>
-                        <RowDefinition Height="90*"></RowDefinition>
-                        <RowDefinition Height="90*"></RowDefinition>
-                        <RowDefinition Height="474*"></RowDefinition>
-                    </Grid.RowDefinitions>
-                    <Rectangle Fill="#7FB2B2C5" Margin="15" Stroke="Black" RadiusX="25" RadiusY="25" Grid.RowSpan="5"/>
-                    <Rectangle Fill="#7FB2B2C5" Margin="15" Stroke="Black" RadiusX="25" RadiusY="25" Grid.Column="1" Grid.RowSpan="5"/>
-                    <TextBox x:Name="AddFio" Margin="30,10" FontSize="28" VerticalContentAlignment="Center" BorderBrush="#FF3F3F40" Foreground="Black" Background="{x:Null}" TextAlignment="Center" Grid.Row="1" Grid.Column="2"/>
-                    <TextBox x:Name="DeleteID" Margin="30,10" FontSize="28" VerticalContentAlignment="Center" BorderBrush="#FF3F3F40" Foreground="Black" Background="{x:Null}" TextAlignment="Center" Grid.Row="1"/>
-                    <TextBox x:Name="AddPost" Margin="30,10" FontSize="28" VerticalContentAlignment="Center" BorderBrush="#FF3F3F40" Foreground="Black" Background="{x:Null}" TextAlignment="Center" Grid.Row="3" Grid.Column="1"/>
-                    <TextBlock Grid.Column="1" Margin="30,25,30,10" TextWrapping="Wrap" Text="ФИО" FontSize="28"/>
-                    <TextBlock Grid.Column="1" Margin="30,10" TextWrapping="Wrap" Text="Должность" FontSize="28" Grid.Row="2"/>
-                    <Button x:Name="AddEmployee" Content="Добавить сотрудника" Grid.Column="1" Height="45" Margin="100,30,100,0" Grid.Row="4" VerticalAlignment="Top" Width="305" FontSize="24" Background="{x:Null}" Click="AddEmployee_Click"/>
-                    <Button x:Name="DeleteEmployee" Content="Удалить сотрудника" Margin="100,11,100,10" Grid.Row="2" FontSize="24" Background="{x:Null}" Click="DeleteEmployee_Click"/>
-                    <TextBlock Margin="30,25,30,10" TextWrapping="Wrap" Text="ID" FontSize="28"/>
+                    <DataGrid x:Name="Staff" Margin="0" Background="{x:Null}" FontSize="16" AutoGenerateColumns="False" InitializingNewItem="InitializingNewItem">
+                        <DataGrid.Columns>
+                            <DataGridTextColumn Header="ID" Binding="{Binding Path=Код}" Width="25" IsReadOnly="True"/>
+                            <DataGridTextColumn Header="Фамилия Имя Отчество" Binding="{Binding Path=ФИО}" Width="400"/>
+                            <DataGridTextColumn Header="Должность" Binding="{Binding Path=Должность}" Width="400"/>
+                        </DataGrid.Columns>
+                    </DataGrid>
                 </Grid>
             </TabItem>
         </TabControl>
-        <Button x:Name="Save" Content="Сохранить" HorizontalAlignment="Right" Height="35" Margin="0,0,10,10" VerticalAlignment="Bottom" Width="156" FontSize="20" Click="Save_Click"/>
-        <TextBlock HorizontalAlignment="Left" Margin="0,688,0,0" TextWrapping="Wrap" Text="Для удаления строки нажмите клавишу Del, после редактирования поля нажмите Enter для автосохранения. Для сохранения в ручном режиме нажмите кнопку сохранить" VerticalAlignment="Bottom" Width="845" Height="50" FontSize="20"/>
+        <TextBlock HorizontalAlignment="Left" TextWrapping="Wrap" Text="Для удаления строки нажмите клавишу DeL" VerticalAlignment="Bottom" Width="410" Height="27" FontSize="20" Margin="4,0,0,10"/>
 
 
 

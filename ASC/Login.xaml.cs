@@ -14,12 +14,8 @@ namespace ASC
         public Login()
         {
             InitializeComponent();
-            Aes aes = Aes.Create();
-            aes.GenerateIV();
-            if (File.Exists("Login"))
-            {
-                var decoded = MyAes.FromAes256(File.ReadAllBytes("Login"));
-                var saved = decoded.Split('\n');
+            if (File.Exists("Login")) {
+                var saved = MyAes.FromAes256(File.ReadAllBytes("Login")).Split('\n');
                 IP.Text = saved[0];
                 login.Text = saved[1];
                 Password.Password = saved[2];
@@ -29,23 +25,16 @@ namespace ASC
         {
             ShowDialog();
             return "Server=" + server +
-                   ";Database=basa;" +
-                   "port=3306;" +
-                   "User Id=" + user +
+                   ";Database=basa" +
+                   ";port=3306" +
+                   ";User Id=" + user +
                    ";password=" + pass;
         }
         private void Close_Click(object sender, RoutedEventArgs e) => ExitLogin();
-
-        private void IP_PreviewTextInput(object sender, TextCompositionEventArgs e)
-        {
+        private void IP_PreviewTextInput(object sender, TextCompositionEventArgs e)        {
             if (!Char.IsDigit(e.Text, 0) && e.Text[0] != '.') e.Handled = true;
         }
-
-        private void Window_PreviewKeyDown(object sender, KeyEventArgs e)
-        {
-            if (e.Key == Key.Enter) ExitLogin();
-        }
-
+        private void Window_PreviewKeyDown(object sender, KeyEventArgs e) { if (e.Key == Key.Enter) ExitLogin(); }
         void ExitLogin()
         {
             server = IP.Text;
