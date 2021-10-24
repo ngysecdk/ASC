@@ -3,10 +3,17 @@ using System.Linq;
 using System.Windows;
 using System.Windows.Input;
 using System.Security.Cryptography;
+using System.Net;
+using System.Net.NetworkInformation;
+using System;
+using MySql.Data.MySqlClient;
+using System.Windows.Media;
+
 namespace ASC
 {
     public partial class Login : Window
     {
+        string IPchar = "1234567890.:ABCDEFabcdef";
         public Login()
         {
             InitializeComponent();
@@ -16,20 +23,59 @@ namespace ASC
                 login.Text = saved[1];
                 Password.Password = saved[2];
             }
+            IP.TextChanged += IP_TextChanged;
         }
-        public string GetLoginString()
+        public MySqlConnection GetLoginString()
         {
             ShowDialog();
-            return "Server=" + IP.Text + ";Database=basa;port=3306;User Id=" + login.Text + ";password=" + Password.Password;
+            return conn;
         }
         private void Close_Click(object sender, RoutedEventArgs e) => ExitLogin();
-        private void IP_PreviewTextInput(object sender, TextCompositionEventArgs e) { if (!char.IsDigit(e.Text, 0) && e.Text[0] != '.') e.Handled = true; }
+        private void IP_PreviewTextInput(object sender, TextCompositionEventArgs e) 
+        {
+            if (!IPchar.Contains(e.Text[0])) e.Handled = true; }
         private void Window_PreviewKeyDown(object sender, KeyEventArgs e) { if (e.Key == Key.Enter) ExitLogin(); }
         void ExitLogin()
         {
+            if (!IsIP(IP.Text)) return;
+            try
+            {
+                if ((new Ping()).Send(address, 100).Status != IPStatus.Success)
+                {
+                    IPLog.Text = "Нет соединения с сервером по указанному адресу";
+                    IPLog.Visibility = Visibility.Visible;
+                    return;
+                }
+            }
+            catch
+            {
+                IPLog.Text = "Нет соединения с сервером по указанному адресу";
+                IPLog.Visibility = Visibility.Visible;
+                return;
+            }
             File.WriteAllBytes("Login", MyAes.ToAes256(IP.Text + "\n" + login.Text + "\n" + Password.Password));
+            try { (conn = new MySqlConnection("Server=" + IP.Text + ";Database=basa;port=3306;User Id=" + login.Text + ";password=" + Password.Password)).Open(); }
+            catch
+            {
+                Password.Foreground = login.Foreground = Brushes.Red;
+                return;
+            }
             Close();
         }
+        IPAddress address;
+        private MySqlConnection conn;
+        bool IsIP(string IP) => IPAddress.TryParse(IP, out address);
+        private void IP_TextChanged(object sender, System.Windows.Controls.TextChangedEventArgs e)
+        {
+            IPLog.Visibility = Visibility.Hidden;
+            if (!IsIP(IP.Text))
+            {
+                IPLog.Text = "Неверный формат IP";
+                IPLog.Visibility = Visibility.Visible;
+            }
+        }
+        private void login_TextChanged(object sender, System.Windows.Controls.TextChangedEventArgs e) => login.Foreground = Brushes.Black;
+        private void Password_PasswordChanged(object sender, RoutedEventArgs e) => Password.Foreground = Brushes.Black;
     }
     class MyAes
     {

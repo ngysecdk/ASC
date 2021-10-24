@@ -10,15 +10,7 @@ namespace ASC
     {
         public DB()
         {
-        retry:
-            try { (conn = new MySqlConnection(new Login().GetLoginString())).Open(); }
-            catch (Exception e) {
-                if (MessageBox.Show(e.Message +
-                    "\nПовторить попытку? (Не думаю. что это поможет)",
-                    "Ошибка при подключении к базе данных", MessageBoxButton.YesNo,
-                    MessageBoxImage.Question,  MessageBoxResult.Yes) == MessageBoxResult.No) Environment.Exit(-1);
-                else goto retry;
-            }
+           conn = new Login().GetLoginString();
         }
         class Table
         {

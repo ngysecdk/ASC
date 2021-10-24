@@ -80,11 +80,12 @@
             </Rectangle.Fill>
         </Rectangle>
         <TextBlock Margin="45,5" Background="{x:Null}" Foreground="Black" Text="Пароль" FontSize="24" Grid.Row="4"/>
-        <Button x:Name="Close" Content="Подключиться" Height="50" Margin="120,0,120,15" VerticalAlignment="Bottom" Click="Close_Click" FontSize="20" BorderBrush="Black" Background="{x:Null}" Foreground="Black" Style="{DynamicResource Подключение}" Grid.Row="6"/>
-        <PasswordBox x:Name="Password" Margin="45,0,45,5" FontSize="28" VerticalContentAlignment="Center" BorderBrush="#FF3F3F40" Foreground="Black" Background="{x:Null}" Grid.Row="5" PasswordChar="⊛" SelectionBrush="#FF587489"/>
+        <Button x:Name="Close" Content="Подключиться" Height="50" Margin="120,0,120,15" VerticalAlignment="Bottom" Click="Close_Click" FontSize="20" BorderBrush="Black" Background="{x:Null}" Foreground="Black" Style="{DynamicResource Подключение}" Grid.Row="6" TabIndex="4"/>
+        <PasswordBox x:Name="Password" Margin="45,0,45,5" FontSize="28" VerticalContentAlignment="Center" BorderBrush="#FF3F3F40" Foreground="Black" Background="{x:Null}" Grid.Row="5" PasswordChar="⊛" SelectionBrush="#FF587489" PasswordChanged="Password_PasswordChanged" TabIndex="3"/>
         <TextBlock Margin="45,10,45,5" Background="{x:Null}" Foreground="Black" Text="IP сервера БД" FontSize="24"/>
-        <TextBox x:Name="IP" Margin="45,0,45,5" FontSize="28" VerticalContentAlignment="Center" BorderBrush="#FF3F3F40" Foreground="Black" Background="{x:Null}" Grid.Row="1" PreviewTextInput="IP_PreviewTextInput" Text="255.255.255.255" TextAlignment="Center" FontStretch="Expanded"/>
+        <TextBox x:Name="IP" Margin="45,0,45,5" FontSize="28" VerticalContentAlignment="Center" BorderBrush="#FF3F3F40" Foreground="Black" Background="{x:Null}" Grid.Row="1" PreviewTextInput="IP_PreviewTextInput" Text="::1" FontStretch="Expanded" TabIndex="1"/>
         <TextBlock Margin="45,5" Background="{x:Null}" Foreground="Black" Text="Логин" FontSize="24" Grid.Row="2"/>
-        <TextBox x:Name="login" Margin="45,0,45,5" FontSize="28" VerticalContentAlignment="Center" BorderBrush="#FF3F3F40" Foreground="Black" Background="{x:Null}" Grid.Row="3" Text="User" TextAlignment="Center"/>
+        <TextBox x:Name="login" Margin="45,0,45,5" FontSize="28" VerticalContentAlignment="Center" BorderBrush="#FF3F3F40" Foreground="Black" Background="{x:Null}" Grid.Row="3" Text="User" TextChanged="login_TextChanged" TabIndex="2"/>
+        <TextBlock x:Name="IPLog" Margin="45,40,45,37" Background="{x:Null}" Foreground="Red" Grid.Row="1" Height="15" Grid.RowSpan="2" Visibility="Hidden"/>
     </Grid>
 </Window>
