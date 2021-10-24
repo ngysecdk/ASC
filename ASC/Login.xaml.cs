@@ -74,8 +74,8 @@ namespace ASC
                 IPLog.Visibility = Visibility.Visible;
             }
         }
-        private void login_TextChanged(object sender, System.Windows.Controls.TextChangedEventArgs e) => login.Foreground = Brushes.Black;
-        private void Password_PasswordChanged(object sender, RoutedEventArgs e) => Password.Foreground = Brushes.Black;
+        private void login_TextChanged(object sender, System.Windows.Controls.TextChangedEventArgs e) => Password.Foreground = login.Foreground = Brushes.Black;
+        private void Password_PasswordChanged(object sender, RoutedEventArgs e) => Password.Foreground = login.Foreground = Brushes.Black;
     }
     class MyAes
     {
