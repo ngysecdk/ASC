@@ -8,7 +8,6 @@ using System.Net.NetworkInformation;
 using System;
 using MySql.Data.MySqlClient;
 using System.Windows.Media;
-
 namespace ASC
 {
     public partial class Login : Window
@@ -25,22 +24,16 @@ namespace ASC
             }
             IP.TextChanged += IP_TextChanged;
         }
-        public MySqlConnection GetLoginString()
-        {
-            ShowDialog();
-            return conn;
-        }
+        public MySqlConnection GetLoginString() { ShowDialog(); return conn; }
         private void Close_Click(object sender, RoutedEventArgs e) => ExitLogin();
-        private void IP_PreviewTextInput(object sender, TextCompositionEventArgs e) 
-        {
-            if (!IPchar.Contains(e.Text[0])) e.Handled = true; }
+        private void IP_PreviewTextInput(object sender, TextCompositionEventArgs e) => e.Handled = !IPchar.Contains(e.Text[0]);
         private void Window_PreviewKeyDown(object sender, KeyEventArgs e) { if (e.Key == Key.Enter) ExitLogin(); }
         void ExitLogin()
         {
             if (!IsIP(IP.Text)) return;
             try
             {
-                if ((new Ping()).Send(address, 100).Status != IPStatus.Success)
+                if (new Ping().Send(address, 100).Status != IPStatus.Success)
                 {
                     IPLog.Text = "Нет соединения с сервером по указанному адресу";
                     IPLog.Visibility = Visibility.Visible;
@@ -54,7 +47,7 @@ namespace ASC
                 return;
             }
             File.WriteAllBytes("Login", MyAes.ToAes256(IP.Text + "\n" + login.Text + "\n" + Password.Password));
-            try { (conn = new MySqlConnection("Server=" + IP.Text + ";Database=basa;port=3306;User Id=" + login.Text + ";password=" + Password.Password)).Open(); }
+            try { (conn = new MySqlConnection($"Server={IP.Text};Database=basa;port=3306;User Id={login.Text};password={Password.Password}")).Open(); }
             catch
             {
                 Password.Foreground = login.Foreground = Brushes.Red;
@@ -67,12 +60,8 @@ namespace ASC
         bool IsIP(string IP) => IPAddress.TryParse(IP, out address);
         private void IP_TextChanged(object sender, System.Windows.Controls.TextChangedEventArgs e)
         {
-            IPLog.Visibility = Visibility.Hidden;
-            if (!IsIP(IP.Text))
-            {
-                IPLog.Text = "Неверный формат IP";
-                IPLog.Visibility = Visibility.Visible;
-            }
+            IPLog.Visibility = IsIP(IP.Text) ? Visibility.Hidden : Visibility.Visible;
+            if (!IsIP(IP.Text)) IPLog.Text = "Неверный формат IP";
         }
         private void login_TextChanged(object sender, System.Windows.Controls.TextChangedEventArgs e) => Password.Foreground = login.Foreground = Brushes.Black;
         private void Password_PasswordChanged(object sender, RoutedEventArgs e) => Password.Foreground = login.Foreground = Brushes.Black;

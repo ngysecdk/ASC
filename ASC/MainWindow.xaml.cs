@@ -12,23 +12,21 @@ namespace ASC
         {
             db = new DB();
             InitializeComponent();
-            Ankers.ItemsSource = db.GetTable("Анкер","Тип_анкера");
-            BuildType.ItemsSource = db.GetTable("Вид_сборки", "Сборка","","", "Цена");
+            Ankers.ItemsSource = db.GetTable("Анкер", "Тип_анкера");
+            BuildType.ItemsSource = db.GetTable("Вид_сборки", "Сборка", Cost: "Цена");
             DekaMaterial.ItemsSource = db.GetTable("Материал_корпуса", "Материал");
             GrifMaterial.ItemsSource = db.GetTable("Материал_грифа", "Материал");
-            Coloring.ItemsSource = db.GetTable("Покраска", "Тип", "", "", "Цена");
+            Coloring.ItemsSource = db.GetTable("Покраска", "Тип", Cost: "Цена");
             Electronic.ItemsSource = db.GetTable("Электронная_начинка", "Конфигурация");
-            Bridges.ItemsSource = db.GetTable("Бридж", "");
-            Strings.ItemsSource = db.GetTable("Струны", "");
-            Kolk.ItemsSource = db.GetTable("Колки", "");
-            SoundGetter.ItemsSource = db.GetTable("Звукосниматель", "");
-            Staff.ItemsSource = db.GetTable("Сотрудники", "ФИО", "", "", "Должность");
+            Bridges.ItemsSource = db.GetTable("Бридж");
+            Strings.ItemsSource = db.GetTable("Струны");
+            Kolk.ItemsSource = db.GetTable("Колки");
+            SoundGetter.ItemsSource = db.GetTable("Звукосниматель");
+            Staff.ItemsSource = db.GetTable("Сотрудники", "ФИО", Cost: "Должность");
             MySqlCommand cmd = new MySqlCommand("SELECT * FROM Заказ", db.conn);
             cmd.ExecuteNonQuery();
-            MySqlDataAdapter dA = new MySqlDataAdapter(cmd);
-            var dataTable = new DataTable("Заказы");
-            dA.FillAsync(dataTable);
-            Orders.ItemsSource = dataTable.DefaultView;
+            DB.Table Table = new DB.Table(new MySqlDataAdapter(cmd), "Заказы", false);
+            Orders.ItemsSource = Table.dataTable.DefaultView;
         }
         private void InitializingNewItem(object sender, InitializingNewItemEventArgs e)
         {
