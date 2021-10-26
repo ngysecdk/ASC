@@ -19,6 +19,7 @@
                             <DataGridTextColumn Header="Примерная цена" Binding="{Binding Path=Примерная_цена}" Width="200"/>
                         </DataGrid.Columns>
                     </DataGrid>
+                    <TextBlock HorizontalAlignment="Left" TextWrapping="Wrap" Text="Для удаления строки нажмите клавишу DeL" VerticalAlignment="Bottom" Width="410" Height="27" FontSize="20" Margin="4,0,0,10"/>
                 </Grid>
             </TabItem>
             <TabItem Header="Бридж">
@@ -31,6 +32,7 @@
                             <DataGridTextColumn Header="Цена" Binding="{Binding Path=Примерная_цена}" Width="200"/>
                         </DataGrid.Columns>
                     </DataGrid>
+                    <TextBlock HorizontalAlignment="Left" TextWrapping="Wrap" Text="Для удаления строки нажмите клавишу DeL" VerticalAlignment="Bottom" Width="410" Height="27" FontSize="20" Margin="4,0,0,10"/>
                 </Grid>
             </TabItem>
             <TabItem Header="Вид сборки">
@@ -42,6 +44,7 @@
                             <DataGridTextColumn Header="Цена" Binding="{Binding Path=Цена}" Width="200"/>
                         </DataGrid.Columns>
                     </DataGrid>
+                    <TextBlock HorizontalAlignment="Left" TextWrapping="Wrap" Text="Для удаления строки нажмите клавишу DeL" VerticalAlignment="Bottom" Width="410" Height="27" FontSize="20" Margin="4,0,0,10"/>
                 </Grid>
             </TabItem>
             <TabItem Header="Материал корпуса">
@@ -53,6 +56,7 @@
                             <DataGridTextColumn Header="Цена" Binding="{Binding Path=Примерная_цена}" Width="200"/>
                         </DataGrid.Columns>
                     </DataGrid>
+                    <TextBlock HorizontalAlignment="Left" TextWrapping="Wrap" Text="Для удаления строки нажмите клавишу DeL" VerticalAlignment="Bottom" Width="410" Height="27" FontSize="20" Margin="4,0,0,10"/>
                 </Grid>
             </TabItem>
             <TabItem Header="Струны">
@@ -65,6 +69,7 @@
                             <DataGridTextColumn Header="Примерная Цена" Binding="{Binding Path=Примерная_цена}" Width="200"/>
                         </DataGrid.Columns>
                     </DataGrid>
+                    <TextBlock HorizontalAlignment="Left" TextWrapping="Wrap" Text="Для удаления строки нажмите клавишу DeL" VerticalAlignment="Bottom" Width="410" Height="27" FontSize="20" Margin="4,0,0,10"/>
                 </Grid>
             </TabItem>
             <TabItem Header="Материал грифа">
@@ -76,6 +81,7 @@
                             <DataGridTextColumn Header="Цена" Binding="{Binding Path=Примерная_цена}" Width="200"/>
                         </DataGrid.Columns>
                     </DataGrid>
+                    <TextBlock HorizontalAlignment="Left" TextWrapping="Wrap" Text="Для удаления строки нажмите клавишу DeL" VerticalAlignment="Bottom" Width="410" Height="27" FontSize="20" Margin="4,0,0,10"/>
                 </Grid>
             </TabItem>
             <TabItem Header="Покраска и аэрография">
@@ -87,6 +93,7 @@
                             <DataGridTextColumn Header="Цена" Binding="{Binding Path=Цена}" Width="200"/>
                         </DataGrid.Columns>
                     </DataGrid>
+                    <TextBlock HorizontalAlignment="Left" TextWrapping="Wrap" Text="Для удаления строки нажмите клавишу DeL" VerticalAlignment="Bottom" Width="410" Height="27" FontSize="20" Margin="4,0,0,10"/>
                 </Grid>
             </TabItem>
             <TabItem Header="Электроника">
@@ -98,6 +105,7 @@
                             <DataGridTextColumn Header="Цена" Binding="{Binding Path=Примерная_цена}" Width="200"/>
                         </DataGrid.Columns>
                     </DataGrid>
+                    <TextBlock HorizontalAlignment="Left" TextWrapping="Wrap" Text="Для удаления строки нажмите клавишу DeL" VerticalAlignment="Bottom" Width="410" Height="27" FontSize="20" Margin="4,0,0,10"/>
                 </Grid>
             </TabItem>
             <TabItem Header="Колки">
@@ -110,6 +118,7 @@
                             <DataGridTextColumn Header="Примерная Цена" Binding="{Binding Path=Примерная_цена}" Width="200"/>
                         </DataGrid.Columns>
                     </DataGrid>
+                    <TextBlock HorizontalAlignment="Left" TextWrapping="Wrap" Text="Для удаления строки нажмите клавишу DeL" VerticalAlignment="Bottom" Width="410" Height="27" FontSize="20" Margin="4,0,0,10"/>
                 </Grid>
             </TabItem>
             <TabItem Header="Звукосниматели">
@@ -122,13 +131,19 @@
                             <DataGridTextColumn Header="Примерная Цена" Binding="{Binding Path=Примерная_цена}" Width="200"/>
                         </DataGrid.Columns>
                     </DataGrid>
+                    <TextBlock HorizontalAlignment="Left" TextWrapping="Wrap" Text="Для удаления строки нажмите клавишу DeL" VerticalAlignment="Bottom" Width="410" Height="27" FontSize="20" Margin="4,0,0,10"/>
                 </Grid>
             </TabItem>
             <TabItem Header="Подтверждение заказов">
                 <Grid Background="#99818181">
-                    <TextBox x:Name="OrderId" Margin="30,90,0,0" FontSize="28" BorderBrush="#FF3F3F40" Foreground="Black" Background="{x:Null}" TextAlignment="Center" Height="46" VerticalAlignment="Top" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" HorizontalAlignment="Left" Width="400"/>
-                    <TextBlock Margin="30,25,0,0" TextWrapping="Wrap" FontSize="28" Width="240" Height="50" HorizontalAlignment="Left" VerticalAlignment="Top"><Run Text="ID"/><Run Text=" заказа"/></TextBlock>
-                    <Button x:Name="AccessOrder" Content="Подтвердить" HorizontalAlignment="Left" Height="50" Margin="450,87,0,0" VerticalAlignment="Top" Width="240" FontSize="24" Click="AccessOrder_Click"/>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="60*"/>
+                        <RowDefinition Height="619*"/>
+                    </Grid.RowDefinitions>
+                    <TextBox x:Name="OrderId" Margin="160,10,240,10" FontSize="28" BorderBrush="#FF3F3F40" Foreground="Black" Background="{x:Null}" TextAlignment="Center" VerticalAlignment="Top" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Height="40" IsReadOnly="True"/>
+                    <TextBlock Margin="30,10,0,0" TextWrapping="Wrap" FontSize="28" Width="120" Height="35" HorizontalAlignment="Left" VerticalAlignment="Top"><Run Text="ID"/><Run Text=" заказа"/></TextBlock>
+                    <Button x:Name="AccessOrder" Content="Подтвердить" HorizontalAlignment="Right" Height="40" Margin="0,10,30,0" VerticalAlignment="Top" Width="200" FontSize="24" Click="AccessOrder_Click" Grid.RowSpan="2"/>
+                    <DataGrid x:Name="Orders" Margin="0" Background="{x:Null}" FontSize="16" InitializingNewItem="InitializingNewItem" Grid.Row="1" IsSynchronizedWithCurrentItem="False" IsReadOnly="True" SelectionMode="Single" SelectionChanged="Orders_SelectionChanged_1"/>
                 </Grid>
             </TabItem>
             <TabItem Header="Сотрудники">
@@ -140,9 +155,9 @@
                             <DataGridTextColumn Header="Должность" Binding="{Binding Path=Должность}" Width="400"/>
                         </DataGrid.Columns>
                     </DataGrid>
+                    <TextBlock HorizontalAlignment="Left" TextWrapping="Wrap" Text="Для удаления строки нажмите клавишу DeL" VerticalAlignment="Bottom" Width="410" Height="27" FontSize="20" Margin="4,0,0,10"/>
                 </Grid>
             </TabItem>
         </TabControl>
-        <TextBlock HorizontalAlignment="Left" TextWrapping="Wrap" Text="Для удаления строки нажмите клавишу DeL" VerticalAlignment="Bottom" Width="410" Height="27" FontSize="20" Margin="4,0,0,10"/>
     </Grid>
 </Window>

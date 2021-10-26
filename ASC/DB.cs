@@ -8,10 +8,7 @@ namespace ASC
 {
     class DB
     {
-        public DB()
-        {
-           conn = new Login().GetLoginString();
-        }
+        public DB() => conn = new Login().GetLoginString();
         class Table
         {
             public Table(MySqlDataAdapter da, string table)
@@ -46,7 +43,7 @@ namespace ASC
                 dA.UpdateCommand.Parameters.Add("@" + Firm, MySqlDbType.Text, 65535, Firm);
                 dA.UpdateCommand.Parameters.Add("@" + Model, MySqlDbType.Text, 65535, Model);
             }
-            dA.DeleteCommand = new MySqlCommand(string.Format("DELETE FROM {0} WHERE Код = @Код", Table), conn);
+            dA.DeleteCommand = new MySqlCommand($"DELETE FROM {Table} WHERE Код = @Код", conn);
             dA.UpdateCommand.Parameters.Add("@" + Cost, (Cost == "Должность") ? MySqlDbType.Text : MySqlDbType.Int32, 15, Cost);
             dA.InsertCommand.Parameters.Add("@" + Cost, (Cost == "Должность") ? MySqlDbType.Text : MySqlDbType.Int32, 15, Cost);
             dA.UpdateCommand.Parameters.Add("@Код", MySqlDbType.Int32, 15, "Код");
