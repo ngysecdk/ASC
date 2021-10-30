@@ -1,5 +1,7 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Data;
+using System.Windows;
 using MySql.Data.MySqlClient;
 namespace ASC
 {
@@ -16,8 +18,14 @@ namespace ASC
                     dataTable.RowChanged += DataTable_RowChanged;
                     dataTable.RowDeleted += DataTable_RowChanged;
                 }
+                dA.ContinueUpdateOnError = true;
             }
-            private void DataTable_RowChanged(object sender, DataRowChangeEventArgs e) => dA.Update((DataTable)sender);
+            private void DataTable_RowChanged(object sender, DataRowChangeEventArgs e)
+            {
+                dA.Update((DataTable)sender);
+                if (e.Row.RowState == DataRowState.Deleted || e.Row.RowState == DataRowState.Detached) return;
+                if ((uint)e.Row.ItemArray[0] == 0) e.Row["Код"] = Convert.ToUInt32(dA.InsertCommand.LastInsertedId);
+            }
             MySqlDataAdapter dA;
             public DataTable dataTable;
         }

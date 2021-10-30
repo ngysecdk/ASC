@@ -10,7 +10,7 @@
             <ImageBrush ImageSource="Images/LoginBack.jpg"/>
         </Grid.Background>
         <TabControl Margin="0" Background="#99363636" FontSize="16">
-            <TabItem Header="Анкер">
+            <TabItem x:Name="AnkerTab" Header="Анкер">
                 <Grid Background="#99818181">
                     <DataGrid x:Name="Ankers" ColumnWidth="*" Margin="0" Background="{x:Null}" FontSize="16" AutoGenerateColumns="False" InitializingNewItem="InitializingNewItem" IsTextSearchEnabled="True">
                         <DataGrid.Columns>
@@ -22,7 +22,7 @@
                     <TextBlock HorizontalAlignment="Left" TextWrapping="Wrap" Text="Для удаления строки нажмите клавишу DeL" VerticalAlignment="Bottom" Width="410" Height="27" FontSize="20" Margin="4,0,0,10"/>
                 </Grid>
             </TabItem>
-            <TabItem Header="Бридж">
+            <TabItem x:Name="BridgeTab" Header="Бридж">
                 <Grid Background="#99818181">
                     <DataGrid x:Name="Bridges" ColumnWidth="*" Margin="0" Background="{x:Null}" FontSize="16" AutoGenerateColumns="False" InitializingNewItem="InitializingNewItem" IsTextSearchEnabled="True">
                         <DataGrid.Columns>
@@ -35,7 +35,7 @@
                     <TextBlock HorizontalAlignment="Left" TextWrapping="Wrap" Text="Для удаления строки нажмите клавишу DeL" VerticalAlignment="Bottom" Width="410" Height="27" FontSize="20" Margin="4,0,0,10"/>
                 </Grid>
             </TabItem>
-            <TabItem Header="Вид сборки">
+            <TabItem x:Name="BuildTab" Header="Вид сборки">
                 <Grid Background="#99818181">
                     <DataGrid x:Name="BuildType" ColumnWidth="*" Margin="0" Background="{x:Null}" FontSize="16" AutoGenerateColumns="False"  InitializingNewItem="InitializingNewItem" IsTextSearchEnabled="True">
                         <DataGrid.Columns>
@@ -47,7 +47,7 @@
                     <TextBlock HorizontalAlignment="Left" TextWrapping="Wrap" Text="Для удаления строки нажмите клавишу DeL" VerticalAlignment="Bottom" Width="410" Height="27" FontSize="20" Margin="4,0,0,10"/>
                 </Grid>
             </TabItem>
-            <TabItem Header="Материал корпуса">
+            <TabItem x:Name="DekaTab" Header="Материал корпуса">
                 <Grid Background="#99818181">
                     <DataGrid x:Name="DekaMaterial" ColumnWidth="*" Margin="0" Background="{x:Null}" FontSize="16" AutoGenerateColumns="False" InitializingNewItem="InitializingNewItem" IsTextSearchEnabled="True">
                         <DataGrid.Columns>
@@ -59,7 +59,7 @@
                     <TextBlock HorizontalAlignment="Left" TextWrapping="Wrap" Text="Для удаления строки нажмите клавишу DeL" VerticalAlignment="Bottom" Width="410" Height="27" FontSize="20" Margin="4,0,0,10"/>
                 </Grid>
             </TabItem>
-            <TabItem Header="Струны">
+            <TabItem x:Name="StringsTab" Header="Струны">
                 <Grid Background="#99818181">
                     <DataGrid x:Name="Strings" ColumnWidth="*" Margin="0" Background="{x:Null}" FontSize="16" AutoGenerateColumns="False" InitializingNewItem="InitializingNewItem" IsTextSearchEnabled="True">
                         <DataGrid.Columns>
@@ -72,7 +72,7 @@
                     <TextBlock HorizontalAlignment="Left" TextWrapping="Wrap" Text="Для удаления строки нажмите клавишу DeL" VerticalAlignment="Bottom" Width="410" Height="27" FontSize="20" Margin="4,0,0,10"/>
                 </Grid>
             </TabItem>
-            <TabItem Header="Материал грифа">
+            <TabItem x:Name="GrifTab" Header="Материал грифа">
                 <Grid Background="#99818181">
                     <DataGrid x:Name="GrifMaterial" ColumnWidth="*" Margin="0" Background="{x:Null}" FontSize="16" AutoGenerateColumns="False" InitializingNewItem="InitializingNewItem" IsTextSearchEnabled="True">
                         <DataGrid.Columns>
@@ -84,7 +84,7 @@
                     <TextBlock HorizontalAlignment="Left" TextWrapping="Wrap" Text="Для удаления строки нажмите клавишу DeL" VerticalAlignment="Bottom" Width="410" Height="27" FontSize="20" Margin="4,0,0,10"/>
                 </Grid>
             </TabItem>
-            <TabItem Header="Покраска и аэрография">
+            <TabItem x:Name="ColoringTab" Header="Покраска и аэрография">
                 <Grid Background="#99818181">
                     <DataGrid x:Name="Coloring" Margin="0" ColumnWidth="*" Background="{x:Null}" FontSize="16" AutoGenerateColumns="False" InitializingNewItem="InitializingNewItem" IsTextSearchEnabled="True">
                         <DataGrid.Columns>
@@ -96,7 +96,7 @@
                     <TextBlock HorizontalAlignment="Left" TextWrapping="Wrap" Text="Для удаления строки нажмите клавишу DeL" VerticalAlignment="Bottom" Width="410" Height="27" FontSize="20" Margin="4,0,0,10"/>
                 </Grid>
             </TabItem>
-            <TabItem Header="Электроника">
+            <TabItem x:Name="ElectronicTab" Header="Электроника">
                 <Grid Background="#99818181">
                     <DataGrid x:Name="Electronic" Margin="0" ColumnWidth="*" Background="{x:Null}" FontSize="16" AutoGenerateColumns="False" InitializingNewItem="InitializingNewItem" IsTextSearchEnabled="True">
                         <DataGrid.Columns>
@@ -108,7 +108,7 @@
                     <TextBlock HorizontalAlignment="Left" TextWrapping="Wrap" Text="Для удаления строки нажмите клавишу DeL" VerticalAlignment="Bottom" Width="410" Height="27" FontSize="20" Margin="4,0,0,10"/>
                 </Grid>
             </TabItem>
-            <TabItem Header="Колки">
+            <TabItem x:Name="KolkTab" Header="Колки">
                 <Grid Background="#99818181">
                     <DataGrid x:Name="Kolk" ColumnWidth="*" Margin="0" Background="{x:Null}" FontSize="16" AutoGenerateColumns="False" InitializingNewItem="InitializingNewItem" IsTextSearchEnabled="True">
                         <DataGrid.Columns>
@@ -121,7 +121,7 @@
                     <TextBlock HorizontalAlignment="Left" TextWrapping="Wrap" Text="Для удаления строки нажмите клавишу DeL" VerticalAlignment="Bottom" Width="410" Height="27" FontSize="20" Margin="4,0,0,10"/>
                 </Grid>
             </TabItem>
-            <TabItem Header="Звукосниматели">
+            <TabItem x:Name="SoundGetTab" Header="Звукосниматели">
                 <Grid Background="#99818181">
                     <DataGrid x:Name="SoundGetter" ColumnWidth="*" Margin="0" Background="{x:Null}" FontSize="16" AutoGenerateColumns="False" InitializingNewItem="InitializingNewItem" IsTextSearchEnabled="True">
                         <DataGrid.Columns>
@@ -146,7 +146,7 @@
                     <DataGrid x:Name="Orders" Margin="0" Background="{x:Null}" FontSize="16" InitializingNewItem="InitializingNewItem" Grid.Row="1" IsSynchronizedWithCurrentItem="False" IsReadOnly="True" SelectionMode="Single" SelectionChanged="Orders_SelectionChanged_1"/>
                 </Grid>
             </TabItem>
-            <TabItem Header="Сотрудники">
+            <TabItem x:Name="StuffTab" Header="Сотрудники">
                 <Grid Background="#99818181">
                     <DataGrid x:Name="Staff" Margin="0" ColumnWidth="*" Background="{x:Null}" FontSize="16" AutoGenerateColumns="False" InitializingNewItem="InitializingNewItem">
                         <DataGrid.Columns>

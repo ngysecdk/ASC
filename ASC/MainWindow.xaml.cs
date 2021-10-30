@@ -28,15 +28,7 @@ namespace ASC
             DB.Table Table = new DB.Table(new MySqlDataAdapter(cmd), "Заказы", false);
             Orders.ItemsSource = Table.dataTable.DefaultView;
         }
-        private void InitializingNewItem(object sender, InitializingNewItemEventArgs e)
-        {
-            DataView dataView = ((DataGrid)sender).ItemsSource as DataView;
-            MySqlDataReader reader = new MySqlCommand($"SELECT MAX(КОД) FROM {dataView.Table.TableName}", db.conn).ExecuteReader();
-            reader.Read();
-            if (reader.IsDBNull(0)) ((DataRowView)e.NewItem)["Код"] = 1;
-            else ((DataRowView)e.NewItem)["Код"] = (uint)reader[0] + 1;
-            reader.Close();
-        }
+        private void InitializingNewItem(object sender, InitializingNewItemEventArgs e)=> ((DataRowView)e.NewItem)["Код"] = 0;
         private void AccessOrder_Click(object sender, RoutedEventArgs e)
         {
             try { db.Req($"UPDATE Заказ SET Подтверждение_оплаты=TRUE WHERE Код={OrderId.Text}"); }
