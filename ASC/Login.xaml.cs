@@ -8,16 +8,19 @@ using System.Net.NetworkInformation;
 using System;
 using MySql.Data.MySqlClient;
 using System.Windows.Media;
+
 namespace ASC
 {
     public partial class Login : Window
     {
         string IPchar = "1234567890.:ABCDEFabcdef";
+        string LoginPath = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) + @"\NGYSECDK";
         public Login()
         {
             InitializeComponent();
-            if (File.Exists("Login")) {
-                var saved = MyAes.FromAes256(File.ReadAllBytes("Login")).Split('\n');
+            Directory.CreateDirectory(LoginPath);
+            if (File.Exists(LoginPath + @"\Login")) {
+                var saved = MyAes.FromAes256(File.ReadAllBytes(LoginPath + @"\Login")).Split('\n');
                 IP.Text = saved[0];
                 login.Text = saved[1];
                 Password.Password = saved[2];
@@ -46,7 +49,7 @@ namespace ASC
                 IPLog.Visibility = Visibility.Visible;
                 return;
             }
-            File.WriteAllBytes("Login", MyAes.ToAes256(IP.Text + "\n" + login.Text + "\n" + Password.Password));
+            File.WriteAllBytes(LoginPath + @"\Login", MyAes.ToAes256(IP.Text + "\n" + login.Text + "\n" + Password.Password));
             try { (conn = new MySqlConnection($"Server={IP.Text};Database=basa;port=3306;User Id={login.Text};password={Password.Password}")).Open(); }
             catch(Exception ex)
             {
