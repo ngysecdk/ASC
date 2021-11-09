@@ -4,7 +4,7 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         mc:Ignorable="d"
-        Title="Программный комплекс бухгалтера" Height="768" Width="1024" WindowState="Maximized" WindowStartupLocation="CenterScreen" MinWidth="1024" MinHeight="768">
+        Title="Программный комплекс бухгалтера" Height="768" Width="1024" WindowState="Maximized" WindowStartupLocation="CenterScreen" MinWidth="1024" MinHeight="768" Icon="icon.ico">
     <Grid>
         <Grid.Background>
             <ImageBrush ImageSource="Images/LoginBack.jpg"/>
